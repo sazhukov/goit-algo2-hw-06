@@ -7,9 +7,7 @@ import json
 from typing import List, Optional, Tuple, Dict, Any
 import os # Added to check for file existence
 
-# ==============================================================================
 # 1. LOADING DATA FROM FILE
-# ==============================================================================
 
 def read_log_file(filepath: str) -> List[str]:
     """
@@ -62,9 +60,7 @@ def load_ip_addresses(log_data: List[str]) -> List[str]:
     print(f"Number of successfully extracted IP addresses for analysis: {len(ips)}")
     return ips
 
-# ==============================================================================
 # 2. EXACT COUNTING (SET)
-# ==============================================================================
 
 def exact_count(ip_list: List[str]) -> Tuple[int, float]:
     """
@@ -77,9 +73,7 @@ def exact_count(ip_list: List[str]) -> Tuple[int, float]:
     end_time = time.perf_counter()
     return count, end_time - start_time
 
-# ==============================================================================
 # 3. APPROXIMATE COUNTING (HYPERLOGLOG)
-# ==============================================================================
 
 class HyperLogLog:
     """
@@ -180,9 +174,7 @@ def hll_count(ip_list: List[str], p: int = 14) -> Tuple[float, float]:
     end_time = time.perf_counter()
     return count, end_time - start_time
 
-# ==============================================================================
 # 4. PERFORMANCE COMPARISON
-# ==============================================================================
 
 def compare_performance(ip_list: List[str]):
     """
